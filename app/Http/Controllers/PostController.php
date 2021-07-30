@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
 
+
+    /**
+     * index
+     *
+     * @return void
+     */
     public function index()
     {
         return view('posts', [
@@ -17,6 +23,13 @@ class PostController extends Controller
         ]);
     }
 
+
+    /**
+     * show
+     *
+     * @param  mixed $post
+     * @return void
+     */
     public function show(Post $post)
     {
         return view(
