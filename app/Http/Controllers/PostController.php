@@ -3,29 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
 
 
     /**
-     * index
+     * Show all of the post for the application.
      *
      * @return void
      */
     public function index()
     {
         return view('posts', [
-            'title' => 'Posts',
+            'title' => 'All Post',
             'name' => 'Ranus',
-            'posts' => Post::all()
+            // 'posts' => Post::latest();
+            'posts' => Post::with(['user', 'category'])->latest()->get()
         ]);
     }
 
 
     /**
-     * show
+     * show of the post by param.
      *
      * @param  mixed $post
      * @return void
@@ -40,4 +40,6 @@ class PostController extends Controller
             ]
         );
     }
+
+
 }
